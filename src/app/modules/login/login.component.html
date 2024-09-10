@@ -1,0 +1,27 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3 pb-3">Login</h1>
+      
+      </div>
+      <div class="form-group">
+        <label for="exampleInputUsername">Username</label>
+        <input type="email" class="form-control" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Enter Username" formControlName="userName">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+   
+  </form>
+</div>
+
+<!-- <app-card-auth title="Sign In">
+  <app-login-form
+    resetLink="/reset-password-form"
+    createAccountLink="/sign-up-form"
+  ></app-login-form>
+</app-card-auth> -->

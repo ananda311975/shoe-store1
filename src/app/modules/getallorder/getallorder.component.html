@@ -1,0 +1,59 @@
+<div *ngFor="let order of orderList" class="order-card">
+  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
+    <h4 class="text-white text-capitalize ps-3">คำสั่งซื้อ</h4>
+    <div class="ms-auto d-flex gap-2">
+      <!-- <button class="btn btn-warning" (click)="onUpdateUser(order.ordersId)">แก้ไข</button> -->
+      <button class="btn btn-danger me-3" (click)="onDeleteOrder(order.ordersId)">ลบ</button>
+    </div>
+  </div>
+  <div class="alert alert-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">ไอดี ออเดอร์</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">ไอดี ผู้ใช้</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">ชื่อ-นามสกุล</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">เบอร์ติดต่อ</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">สถานะการชำระเงิน</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">วันที่สั่งสินค้า</th>
+          <th class="text-uppercase text-secondary text-x font-weight-bolder">ที่อยู่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="align-middle text-center">
+            <p class="text-x font-weight-bold mb-0">{{ order.ordersId }}</p>
+          </td>
+          <td class="align-middle text-center">
+            <p class="text-x font-weight-bold mb-0">{{ order.userId }}</p>
+          </td>
+          <td *ngIf="order.userData" class="align-middle text-center">
+            <p class="text-x font-weight-bold mb-0">
+              {{ order.userData.firstName }} {{ order.userData.lastName }}
+            </p>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-x font-weight-bold">{{ order.phone }}</span>
+          </td>
+          <td
+            class="align-middle text-center"
+            (click)="setSelectedProduct(order)"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <span *ngIf="order.status == '1'" class="badge badge-x bg-gradient-warning">กำลังตรวจสอบ</span>
+            <span *ngIf="order.status == '2'" class="badge badge-x bg-gradient-success">ชำระเงินเเล้ว รอรับสินค้า</span>
+            <span *ngIf="order.status == '3'" class="badge badge-x bg-gradient-danger">ยังไม่ชำระเงิน</span>
+            <span *ngIf="order.status == '4'" class="badge badge-x bg-gradient-secondary">ชำระเงินไม่ครบตามจำนวน</span>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-x font-weight-bold">{{ order.createDate | date: 'medium' }}</span>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-x font-weight-bold">{{ order.address }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="  position-relative mt-n4 mx-lg-10 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+              <h6 class="text-white text-capitalize ps-3 text-center">ตารางสินค้า</h6>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                </div>
+                <div class="btn ml-2 justify-content-center">
+                  <a class="btn btn-primary mb-0 " [routerLink]="['/product']"><i class="material-icons text-sm">add</i>เพิ่มสินค้า</a>
+                </div>
+              </div>
+            </div>
+          <div class="card-body px-0 pb-2 ">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">รูปสินค้า</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">รายละเอียดสินค้า</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ประเภทสินค้า</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ราคา</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">จำนวน</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                    <th class="text-secondary opacity-7"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of productList">
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img *ngFor="let productImg of  product.imgList" [src]="productImg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{product.productName}}</h6>
+                            <p class="text-xs text-secondary mb-0">{{product.productDesc}}</p>
+                          </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{null != product.productType[0] ? product.productType[0].productTypeName : ''}}</p>
+                      <p class="text-xs text-secondary mb-0">{{null != product.productType[0] ? product.productType[0].productTypeDesc: ''}}</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                        <span class="text-secondary text-xs font-weight-bold">{{product.price}}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{product.quantity}}</span>
+                    </td>
+                    <td class="align-middle text-center m-2 p-4">
+                        <button class="btn btn-primary m-1"  (click)="onUpdateProduct(product.productId)">แก้ไข</button>
+                        <button class="btn btn-danger m-1" (click)="onDeleteProduct(product.productId)">ลบ</button>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

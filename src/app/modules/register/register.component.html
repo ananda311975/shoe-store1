@@ -1,0 +1,64 @@
+<form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+	<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+		<div class="col-lg-7 text-center text-lg-start">
+			<h1 class="display-4 fw-bold lh-1 mb-3 pb-3">Register</h1>
+		</div>
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="fristName" class="form-control" placeholder="Frist name" type="text">
+		</div> <!-- form-group// -->
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="lastName" class="form-control" placeholder="Last name" type="text">
+		</div> <!-- form-group// -->
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+			</div>
+			<input formControlName="phone" class="form-control" placeholder="Phone number" type="text">
+		</div> <!-- form-group// -->
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+			</div>
+			<input formControlName="age" class="form-control" placeholder="Age" type="text">
+		</div> <!-- form-group// -->
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+			</div>
+			<select class="form-control" formControlName="roleId">
+				<option selected="" value=""> กรุณาเลือก Role</option>
+				<option *ngFor="let item of roleList" value="{{item.id}}">{{item.roleName}}</option>
+			</select>
+		</div> <!-- form-group end.// -->
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="userName" class="form-control" placeholder="username" type="text">
+		</div> <!-- form-group// -->
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+			</div>
+			<input formControlName="password" class="form-control" placeholder="Create password" type="password" >
+		</div> <!-- form-group// -->
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+			</div>
+			<input formControlName="confirmPassword" class="form-control" placeholder="Repeat password" type="password">
+		</div> <!-- form-group// -->    
+		<div>
+			<p *ngIf="isPassword"> กรุณากรอก Password ให้ตรงกันกับด้านบนด้วยค่ะ </p>
+		</div>                                 
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary btn-block"> Save Account  </button>
+		</div> <!-- form-group// -->      
+	</div>                                                             
+</form>

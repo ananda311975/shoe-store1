@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Shoe Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background-image: url('shoe-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .footer {
+      background-color: #343a40;
+      color: black;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .btn-cart {
+          font-size: 16px;
+          padding: 10px 20px;
+          color: white;
+          background-color: #007bff;
+          border: none;
+          cursor: pointer;
+          border-radius: 4px;
+      }
+
+      .btn-cart i {
+          margin-right: 5px;
+      }
+
+      .btn-cart:hover {
+          background-color: #0056b3;
+      }
+  </style>
+</head>
+<body>
+
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Welcome to Shoe Store</h1>
+    <p>Find your perfect pair of shoes</p>
+    <a href="/shopnow" class="btn btn-primary btn-lg">Shop Now</a>
+  </div>
+</section>
+
+<!-- Featured Products Section -->
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 ">Featured Products : fashion</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4 "*ngFor="let product of productList">
+        <div class="card product-card">
+          <img *ngFor="let productImg of  product.imgList" [src]="productImg" class="card-img-top" alt="Shoe 1">
+          <div class="card-body">
+            <h5 class="card-title">{{product.productName}}</h5>
+            <p class="card-text">{{product.price}}</p>
+            <p class="text-xs text-secondary mb-1">{{product.productDesc}}</p>
+            <div *ngIf="userDetail">
+              <button class="btn btn-sm btn-cart" (click)="addtoCart(product)">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-6">
+  <div class="container">
+    <h2 class="text-center mb-5">Featured Products : hiking boots</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4 "*ngFor="let product of productList">
+        <div class="card product-card">
+          <img *ngFor="let productImg of  product.imgList" [src]="productImg" class="card-img-top" alt="Shoe 2">
+          <div class="card-body">
+            <h5 class="card-title">{{product.productName}}</h5>
+            <p class="card-text">{{product.price}}</p>
+            <p class="text-xs text-secondary mb-1">{{product.productDesc}}</p>
+            <div *ngIf="userDetail">
+              <button class="btn btn-sm btn-cart" (click)="addtoCart(product)">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 Shoe Store. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

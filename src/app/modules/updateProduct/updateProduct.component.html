@@ -1,0 +1,80 @@
+
+<div class="container">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12">
+                      <h4>สินค้า</h4>
+                      <hr>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <form [formGroup]="updateProductForm" (submit)="onSubmit()">
+                      <div class="form-group row">
+                        <label for="productTypeId" class="col-4 col-form-label">ประเภทสินค้า</label> 
+                        <div class="col-12">
+                          <select  class="custom-select" formControlName="productTypeId">
+                            <option *ngFor="let item of productTypeList" value="{{item.productTypeId}}">{{item.productTypeName}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="productName" class="col-4 col-form-label">ชื่อสินค้า</label> 
+                        <div class="col-12">
+                          <input formControlName="productName"  placeholder="ชื่อสินค้า" class="form-control here"  type="text">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="productDesc" class="col-4 col-form-label">รายละเอียดสินค้า</label> 
+                        <div class="col-12">
+                          <input formControlName="productDesc" placeholder="รายละเอียดสินค้า" class="form-control here" type="text">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="price" class="col-4 col-form-label">ราคา</label> 
+                        <div class="col-12">
+                          <input formControlName="price" step='0.01' placeholder="ราคา" class="form-control" type="number">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="quantity" class="col-4 col-form-label">จำนวน</label> 
+                        <div class="col-12">
+                          <input formControlName="quantity" placeholder="จำนวน" class="form-control here"  type="number">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="carousel-item">
+                          
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5>...</h5>
+                            <p>...</p>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="form-group row" *ngFor="let item of  ImageList">
+                        <img   [src]="item.value" class="d-block w-20 h-20" >
+                        <button type="button" class="btn-close" aria-label="Close" (click)="onDeleteFileChanged(item.key)" ><i class="fa-solid fa-xmark"></i></button>
+                      </div>
+                      
+                      
+                      <div class="form-group row">
+                        <label for="age" class="col-4 col-form-label">รูปสินค้า</label> 
+                        <div class="col-12">
+                          <input formControlName="files" #fileInput (change)="onFileChanged($event)"  placeholder="รูปสินค้า" class="form-control here"  type="file" multiple>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-5 col-12">
+                          <button name="submit" type="submit" class="btn btn-primary">Save Product</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

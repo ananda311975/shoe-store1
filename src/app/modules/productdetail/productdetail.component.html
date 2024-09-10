@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .order-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-form h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .order-form .form-group {
+      margin-bottom: 15px;
+    }
+
+    .order-form .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .order-form .form-group input,
+    .order-form .form-group select,
+    .order-form .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .order-form .form-group select {
+      background-color: #fff;
+    }
+
+    .order-form .form-group input[type="submit"]:hover {
+      background-color: #ffc107;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .back-link i {
+      margin-right: 8px;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1rem;
+      padding: 10px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+    }
+
+    .btn-dark {
+      background-color: #343a40;
+    }
+
+    .btn-close {
+      background-color: red;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .modal-body-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-body-content img {
+      width: 256px;
+      height: 256px;
+      border-radius: 5px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="order-form">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="block mb-4 p-4 border rounded" style="background-color: #ffffffd8">
+          <div class="block-header mb-3 text-center">
+            <h4 class="mb-0">ที่อยู่จัดส่ง</h4>
+          </div>
+          <div class="block-body">
+            <div class="row">
+              <div class="form-group col-md-6 mb-3">
+                <label class="form-label" for="fullname_invoice">ชื่อผู้รับสินค้า</label>
+                <input
+                  placeholder="{{ userDetail.fristName }} {{ userDetail.lastName }}"
+                  class="form-control here"
+                  required="required"
+                  type="text"
+                  readonly
+                />
+              </div>
+              <div class="form-group col-md-6 mb-3">
+                <label class="form-label" for="phonenumber_invoice">มือถือ</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="phonenumber_invoice"
+                  placeholder="เบอร์โทรศัพท์"
+                  formControlName="phone"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="billing-address">ที่อยู๋</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  rows="3"
+                  placeholder="กรุณากรอกที่อยู่ให้ถูกต้อง"
+                  formControlName="address"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="btn btn-dark text-white">
+            บันทึกที่อยู่<i class="fa fa-angle-right ms-2"></i>
+          </button>
+          <button class="btn btn-warning" type="button" (click)="scan(selectedOrder, getTotalPrice(selectedOrder))" data-bs-toggle="modal" data-bs-target="#exampleModals">
+            ชำระเงิน
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal fade pt-8" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered custom-modal-width">
+        <div class="modal-content">
+          <div class="modal-header bg-dark shadow-dark">
+            <h4 class="modal-title text-white" id="exampleModalLabel">สแกนชำระเงิน</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+            <form>
+              <div class="modal-body-content w-100 text-center">
+                <div data-mdb-input-init class="form-outline">
+                  <div class="flex justify-center items-center">
+                    <img class="w-64 h-64 rounded" [src]="linkPrompray">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

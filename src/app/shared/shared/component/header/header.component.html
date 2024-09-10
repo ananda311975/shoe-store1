@@ -1,0 +1,54 @@
+<header class="p-3 bg-dark text-white fixed-header">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between px-0">
+      <a href="/" class="nav-link px-2 text-white fs-1 ">SHOE STORE</a>
+      <ul class="nav col-12 col-lg-auto justify-center ">
+        <li *ngIf="null == userDetail"><a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="nav-link px-2 text-white m-1">หน้าหลัก</a></li>
+        <li *ngIf="null != userDetail"><a [routerLink]="['/']" routerLinkActive="router-link-active"  class="nav-link px-2 text-white">หน้าหลัก</a></li>
+        <li *ngIf="null != userDetail"><a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="nav-link px-2 text-white">โปรไฟล์</a></li>
+        <li *ngIf="null != userDetail && userDetail.roleId == 1"><a [routerLink]="['/manage-user']" routerLinkActive="router-link-active"  class="nav-link px-2 text-white">จัดการลูกค้า</a></li>
+        <li *ngIf="null != userDetail && userDetail.roleId == 1"><a [routerLink]="['/manage-product']" class="nav-link px-2 text-white">จัดการสินค้า</a></li>
+        <li *ngIf="null != userDetail && userDetail.roleId == 1">
+          <a
+            [routerLink]="['/getallorder']"
+            routerLinkActive="router-link-active"
+            class="nav-link px-2 text-white"
+            >คำสั่งซื้อทั่งหมด</a></li>
+        <li *ngIf="null != userDetail && userDetail.roleId == 1"><a href="#" class="nav-link px-2 text-white" [routerLink]="['/report']">รายงาน</a></li>
+      </ul>
+
+      <div class="text-end d-flex align-items-center">
+        <div class="me-4 " *ngIf="null != userDetail">
+          <a [routerLink]="['/cart']" class="text-white position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 6H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 15H4a.5.5 0 0 1-.491-.408L1.01 3H.5a.5.5 0 0 1-.5-.5zm3.14 5l1.4 7h7.43l1.4-7H3.14zM5 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div *ngIf="null == userDetail">
+          <button type="button" class="btn btn-outline-light me-2 m-1" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</button>
+          <button type="button" class="btn btn-warning m-1" [routerLink]="['/register']" routerLinkActive="router-link-active" >Sign-up</button>
+        </div>
+        <div *ngIf="null != userDetail">
+          <button type="button" class="btn btn-outline-light  m-1" (click)="logout()" >logOut</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div style="padding: 80px 20px;"> <!-- Adjust padding to ensure content is visible below fixed header -->
+    <!-- Your content here -->
+  </div>
+</main>
+
+<style>
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+</style>

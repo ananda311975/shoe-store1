@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Icon</title>
+    <link rel="stylesheet" href="/">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          width: 450px;
+          margin: 0 auto;
+          padding: 2px;
+          border: 1px solid #ccc;
+          border-radius: 25px;
+      }
+
+      .search-container input {
+          border: none;
+          outline: none;
+          padding: 10px;
+          flex-grow: 1;
+          border-radius: 25px 0 0 25px;
+      }
+
+      .search-container button {
+          background-color: #fff;
+          border: none;
+          outline: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 0 25px 25px 0;
+      }
+
+      .search-container button img {
+          width: 10px;
+          height: 10px;
+      }
+
+      .search-results {
+          position: absolute;
+          background: #fff;
+          border: 1px solid #ccc;
+          width: 450px;
+          margin: 0 auto;
+          padding: 10px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          z-index: 1000;
+      }
+
+      .search-results .product {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+      }
+
+      .search-results img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          margin-right: 10px;
+      }
+
+      .search-results h2 {
+          margin: 0;
+          font-size: 16px;
+      }
+
+      .hero {
+          background-image: url('shoe-banner.jpg');
+          background-size: cover;
+          background-position: center;
+          height: 70vh;
+          color: black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+      }
+
+      .hero h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+      }
+
+      .product-card img {
+          height: 250px;
+          object-fit: cover;
+      }
+
+      .footer {
+          background-color: #343a40;
+          color: black;
+          padding: 1rem 0;
+          text-align: center;
+      }
+
+      .btn-cart {
+          font-size: 16px;
+          padding: 10px 20px;
+          color: white;
+          background-color: #007bff;
+          border: none;
+          cursor: pointer;
+          border-radius: 4px;
+      }
+
+      .btn-cart i {
+          margin-right: 5px;
+      }
+
+      .btn-cart:hover {
+          background-color: #0056b3;
+      }
+      h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+        h3 {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .content-wrapper {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+     <title>บทนำ: เรื่องของรองเท้า</title>
+</head>
+<body>
+
+
+  <section class="py-5">
+    <div class="content-wrapper">
+      <h1 class="text-center mb-5 pb-4">บทนำ: เรื่องของรองเท้า</h1>
+      <h3 class="text-center mb-5">รองเท้าเป็นสิ่งที่ทุกคนต้องสวมใส่ในชีวิตประจำวัน ไม่ว่าจะเป็นเพื่อการทำงาน การเดินทาง หรือการออกกำลังกาย รองเท้าถือเป็นสิ่งที่มีความสำคัญอย่างยิ่งในการปกป้องเท้าของเราและช่วยเสริมสร้างความมั่นใจในการก้าวเดิน
+        ประวัติศาสตร์ของรองเท้าเริ่มต้นมาหลายพันปี ตั้งแต่ยุคโบราณที่มนุษย์เริ่มรู้จักการสร้างรองเท้าเพื่อปกป้องเท้าจากสิ่งแวดล้อมที่ไม่ปลอดภัย การออกแบบและวัสดุที่ใช้ทำรองเท้าได้รับการพัฒนาอย่างต่อเนื่องตามกาลเวลาและเทคโนโลยีที่เปลี่ยนแปลงไป
+        ในปัจจุบัน รองเท้าไม่ได้มีเพียงหน้าที่ในการปกป้องเท้าเท่านั้น แต่ยังเป็นสัญลักษณ์ของสไตล์และแฟชั่น รองเท้าแต่ละคู่มีดีไซน์และวัตถุประสงค์การใช้งานที่หลากหลาย เช่น รองเท้ากีฬา รองเท้าแฟชั่น รองเท้าทำงาน และรองเท้าลำลอง การเลือกใช้รองเท้าที่เหมาะสมกับกิจกรรมและสภาพแวดล้อมจะช่วยให้การเดินและการเคลื่อนไหวของเราเป็นไปอย่างมีประสิทธิภาพและสบายมากขึ้น</h3>
+    </div>
+    <hr>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+   
+    <div class="search-container">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchText" (input)="searchProduct()">
+      <button type="button" (click)="searchProduct()">
+        <img src="" alt="">
+      </button>
+    </div>
+  
+    <!-- <div *ngIf="isSearchActive" class="search-results">
+      <div *ngFor="let product of filteredProductList" class="product">
+        <img *ngFor="let img of product.imgList" [src]="img" alt="Product Image">
+        <div>
+          <h2>{{ product.productName }}</h2>
+          <p>{{ product.productDesc }}</p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="container">
+      <h2 class="text-center mb-5 mt-5">Featured Products: Fashion</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let product of filteredProductList">
+          <div class="card product-card" (click)="setSelectedProduct(product)">
+            <img *ngFor="let productImg of product.imgList" [src]="productImg" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">{{product.productName}}</h5>
+              <p class="card-text">{{product.price}}</p>
+              <p class="text-xs text-secondary mb-1">{{product.productDesc}}</p>
+              <div *ngIf="userDetail">
+                <button class="btn btn-cart" (click)="addtoCart(product)">
+                  <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
